@@ -1,0 +1,28 @@
+<p>
+  <b>Parent:</b>
+  <%=h @category.parent_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @category.name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @category.cattype_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @category.description %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%=h @category.weight %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

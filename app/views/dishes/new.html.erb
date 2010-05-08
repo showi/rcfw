@@ -1,0 +1,34 @@
+<h1>New dish</h1>
+
+<% form_for(@dish) do |f| %>
+  <%= f.error_messages %>
+	<p>
+  <%= collection_select(:dish, :category_id, @categories, :id, :name, options ={:prompt => "- Select type"}, :class =>"payment") %>
+
+</p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :available %><br />
+    <%= f.check_box :available %>
+  </p>
+  <p>
+    <%= f.label :onlywithmenu%><br />
+    <%= f.check_box :onlywithmenu %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', dishes_path %>

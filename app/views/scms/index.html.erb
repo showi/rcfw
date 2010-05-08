@@ -1,0 +1,18 @@
+<h1>Listing scms</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @scms.each do |scm| %>
+  <tr>
+    <td><%= link_to 'Show', scm %></td>
+    <td><%= link_to 'Edit', edit_scm_path(scm) %></td>
+    <td><%= link_to 'Destroy', scm, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New scm', new_scm_path %>

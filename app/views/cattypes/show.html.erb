@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @cattype.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @cattype.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_cattype_path(@cattype) %> |
+<%= link_to 'Back', cattypes_path %>

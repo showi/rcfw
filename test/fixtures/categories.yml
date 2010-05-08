@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parent_id: 1
+  name: MyString
+  type: MyString
+  description: MyString
+  weight: 1
+
+two:
+  parent_id: 1
+  name: MyString
+  type: MyString
+  description: MyString
+  weight: 1

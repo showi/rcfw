@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @dish.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @dish.description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%=h @dish.price %>
+</p>
+
+<p>
+  <b>Availablle:</b>
+  <%=h @dish.available %>
+</p>
+
+<p>
+  <b>Only with menu:</b>
+  <%=h @dish.onlywithmenu %>
+</p>
+
+
+<%= link_to 'Edit', edit_dish_path(@dish) %> |
+<%= link_to 'Back', dishes_path %>

@@ -1,0 +1,28 @@
+<h1>Listing dishes</h1>
+
+<table>
+  <tr>
+    <th>| Name</th>
+    <th>| Description</th>
+    <th>| Type</th>
+    <th>| Price</th>
+    <th>| Available</th>
+  </tr>
+
+<% @dishes.each do |dish| %>
+  <tr>
+    <td><%=h dish.name %></td>
+    <td><%=h dish.description %></td>
+    <td><%=h dish.category ? dish.category.name : "NONE" %></td>
+    <td><%=h dish.price %></td>
+    <td><%=h dish.available %></td>
+    <td><%= link_to 'Show', dish %></td>
+    <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
+    <td><%= link_to 'Destroy', dish, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New dish', new_dish_path %>

@@ -1,0 +1,11 @@
+<h1>New scm</h1>
+
+<% form_for(@scm) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', scms_path %>

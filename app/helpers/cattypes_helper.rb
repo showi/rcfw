@@ -1,0 +1,2 @@
+module CattypesHelper
+end

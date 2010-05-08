@@ -1,0 +1,45 @@
+<h1>Editing menu</h1>
+
+<% form_for(@menu) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :available %><br />
+    <%= f.check_box :available %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+	<p>Dish list</p>
+	<ul>
+	<% DishesMenu.find(:all, :conditions => { :menu_id => @menu.id }).each do |dishesMenu| %>
+	<% dish = Dish.find(dishesMenu.dish_id) %>	
+	<li style="display:inline"><%=h dish.name %>
+  			<% form_tag("/menus/del_dish",:options => { :style => "display:inline"}) do %>
+			<%= hidden_field_tag 'dishes_menus[id]', dishesMenu.id %>
+			<%=  submit_tag "Del"%>
+	<% end %>
+</li>
+	<% end %>
+	</ul>
+  <% form_tag("/menus/add_dish" ) do %>
+	<%= hidden_field_tag 'dishes_menus[menu_id]', @menu.id %>
+	<%= collection_select(:dishes_menus, :dish_id, find_active_dishes(), :id, :name, :class =>"dish") %>
+	<%=  submit_tag "Add"%>
+	<% end %>
+
+<%= link_to 'Show', @menu %> |
+<%= link_to 'Back', menus_path %>
