@@ -1,9 +1,8 @@
 <h1>New dish</h1>
-
 <% form_for(@dish) do |f| %>
   <%= f.error_messages %>
 	<p>
-  <%= collection_select(:dish, :category_id, @categories, :id, :name, options ={:prompt => "- Select type"}, :class =>"payment") %>
+  <%= collection_select(:dish, :category_id, find_category_by_type("dish"), :id, :name, options ={:prompt => "- Select type"}, :class =>"payment") %>
 
 </p>
   <p>

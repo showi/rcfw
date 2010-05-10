@@ -1,0 +1,20 @@
+<h1>Listing data_mimes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @data_mimes.each do |data_mime| %>
+  <tr>
+    <td><%=h data_mime.name %></td>
+    <td><%= link_to 'Show', data_mime %></td>
+    <td><%= link_to 'Edit', edit_data_mime_path(data_mime) %></td>
+    <td><%= link_to 'Destroy', data_mime, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New data_mime', new_data_mime_path %>

@@ -1,28 +1,29 @@
-<h1>Listing dishes</h1>
-
-<table>
-  <tr>
-    <th>| Name</th>
-    <th>| Description</th>
-    <th>| Type</th>
-    <th>| Price</th>
-    <th>| Available</th>
-  </tr>
-
-<% @dishes.each do |dish| %>
-  <tr>
-    <td><%=h dish.name %></td>
-    <td><%=h dish.description %></td>
-    <td><%=h dish.category ? dish.category.name : "NONE" %></td>
-    <td><%=h dish.price %></td>
-    <td><%=h dish.available %></td>
-    <td><%= link_to 'Show', dish %></td>
-    <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-    <td><%= link_to 'Destroy', dish, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table width="100%">
+	<% find_top_category_by_type("dish").each do |category| %>
+		<tr>
+			<td colspan="3" class="table_header"><%= image_tag("puce.png") %>
+			<%= category.name.capitalize %>
+		</tr>
+		<% Dish.find(:all, :conditions => { :category_id => category.id }).each do |dish| %>
+			<tr>
+			<td>&nbsp;</td>
+			<td style="color: black"><li><%=h dish.name %></td>
+			<td style="color: white;"><%=h dish.price / 100.0 %>&nbsp;&euro;</td>
+			<% if isadmin then %>
+			<td><%=h dish.description%></td>
+			<td><%=h dish.available%></td>
+			<td><%=h dish.onlywithmenu%></td>
+    		<td><%= link_to 'Show', dish %></td>
+   	 	<td><%= link_to 'Edit', edit_dish_path(dish) %></td>
+   		 <td><%= link_to 'Destroy', dish, :confirm => 'Are you sure?', :method => :delete %></td>
+			<%end %>
+			</tr>
+		<% end %>
+	<% end %>	
 </table>
 
 <br />
 
+<% if isadmin then %>
 <%= link_to 'New dish', new_dish_path %>
+<% end %>

@@ -31,6 +31,17 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
+ <p>tag list</p>
+   <ul>
+	<% @dish.tag_list.each do |tag| %>
+		<li><%= tag %></li>
+	<% end %>
+   </ul>
+  <% form_tag("/dishes/add_tag" ) do %>
+   <%= hidden_field_tag 'tag[dish_id]', @dish.id %>
+   <%= text_field_tag 'tag[name]'%>
+   <%=  submit_tag "Add"%>
+   <% end %>
 
 <%= link_to 'Show', @dish %> |
 <%= link_to 'Back', dishes_path %>

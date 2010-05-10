@@ -1,4 +1,6 @@
 class CattypesController < ApplicationController
+	before_filter :require_admin_user
+
   # GET /cattypes
   # GET /cattypes.xml
   def index

@@ -1,18 +1,11 @@
 <h1>Listing categories</h1>
 
 <table>
-  <tr>
-    <th>Parent</th>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Weight</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @categories.each do |category| %>
+<% Cattype.all.each do |type| %>
+	<tr>
+		<td colspan="5" style="background-color: black; color:white"><%= type.name %></td>
+	</tr>
+	<% Category.find(:all, :conditions => { :cattype_id => type.id }, :order => :weight).each do |category| %>
   <tr>
     <td><%=h category.parent != nil ? category.parent.name : "NONE" %></td>
     <td><%=h category.name %></td>
@@ -23,8 +16,12 @@
     <td><%= link_to 'Edit', edit_category_path(category) %></td>
     <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
+		
+	<% end %>
 <% end %>
 </table>
+
+
 
 <br />
 

@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+	before_filter :require_admin_user, :only => [:new, :create, :edit, :update, :add_dish, :del_dish, :destroy]
   # GET /menus
   # GET /menus.xml
   def index

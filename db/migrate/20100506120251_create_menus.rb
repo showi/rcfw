@@ -5,8 +5,10 @@ class CreateMenus < ActiveRecord::Migration
       t.text :description
       t.boolean :available
       t.integer :price
-
-      t.timestamps
+		t.integer :category_id
+   	t.text :comment   
+		t.integer :num_person
+		t.timestamps
     end
   end
 

@@ -2,10 +2,22 @@
 
 <table>
   <tr>
+    <th>Parent</th>
+    <th>Next</th>
+    <th>Prev</th>
+    <th>Type</th>
+    <th>Mime</th>
+    <th>Content</th>
   </tr>
 
 <% @scms.each do |scm| %>
   <tr>
+    <td><%=h scm.parent_id %></td>
+    <td><%=h scm.next_id %></td>
+    <td><%=h scm.prev_id %></td>
+    <td><%=h scm.type %></td>
+    <td><%=h scm.data_mime.name %></td>
+    <td><%=h scm.content %></td>
     <td><%= link_to 'Show', scm %></td>
     <td><%= link_to 'Edit', edit_scm_path(scm) %></td>
     <td><%= link_to 'Destroy', scm, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -4,6 +4,30 @@
   <%= f.error_messages %>
 
   <p>
+    <%= collection_select(:scm, :parent_id, Scm.all, :id, :title, options ={:prompt => "- Select Parent"}) %>
+  </p>
+  <p>
+    <%= collection_select(:scm, :next_id, Scm.all, :id, :title, options ={:prompt => "- Select Next"}) %>
+  </p>
+  <p>
+    <%= collection_select(:scm, :prev_id, Scm.all, :id, :title, options ={:prompt => "- Select Previous"}) %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= collection_select(:scm, :data_mime_id, DataMime.all, :id, :name, options ={:prompt => "- Select Mime"}) %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>

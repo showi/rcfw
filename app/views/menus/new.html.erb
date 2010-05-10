@@ -2,8 +2,11 @@
 
 <% form_for(@menu) do |f| %>
   <%= f.error_messages %>
+	<p>
+	<%= collection_select(:menu, :category_id, find_category_by_type("menu"), :id    , :name, options ={:prompt => "- Select type"}, :class =>"payment") %>
 
-  <p>
+	</p>
+	<p>
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>

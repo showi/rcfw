@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+	before_filter :require_admin_user 
+
   # GET /categories
   # GET /categories.xml
   def index
@@ -44,6 +46,8 @@ class CategoriesController < ApplicationController
   # POST /categories.xml
   def create
     @category = Category.new(params[:category])
+	 @cattypes = Cattype.all
+    @categories = Category.all	 
 
     respond_to do |format|
       if @category.save

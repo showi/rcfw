@@ -1,8 +1,13 @@
 class DishesController < ApplicationController
+   before_filter :require_admin_user, :only => [:new, :create, :edit, :update, :add_dish, :del_dish, :destroy]
+    #before_filter :require_no_user, :only => [:index, :show]
+
   # GET /dishes
   # GET /dishes.xml
   def index
-    @dishes = Dish.all
+   @cattype = Cattype.find(:first, :conditions => { :name => "dish" }) 
+	#@categories = find_top_category_by_type("dish")
+	#@dishes = Dish.find(:all, :order => :category_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -83,4 +88,18 @@ class DishesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+	def add_tag
+      respond_to do |format|
+         if (params[:tag][:dish_id] and params[:tag][:name])
+            dish = Dish.find(params[:tag][:dish_id])
+				dish.tag_list.add(params[:tag][:name])
+				dish.save
+				flash[:notice] = "tag added"
+         end    
+         format.html { redirect_to :back }
+      end    
+
+	end
+
 end
