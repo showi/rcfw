@@ -1,23 +1,11 @@
 <table>
 <% @menus.each do |menu| %>
-  <tr>
-    <td><%=h menu.name %></td>
-    <td><%=h menu.description %></td>
-    <td><%=h menu.price / 100.0 %>&nbsp;&euro;</td>
-   <% if isadmin then %> 
-    <td><%=h menu.available %></td>
-	<td><%= link_to 'Show', menu %>
-    <%= link_to 'Edit', edit_menu_path(menu) %>
-    <%= link_to 'Destroy', menu, :confirm => 'Are you sure?', :method => :delete %></td>
-		<% end %>
-	<tr><td /><table> 
-	<% menu.dishes.each do |dish| %>
-		<tr><td>- <%=h dish.name %><td><td colspan="5"><%=h dish.description %></td></tr>
-	 <% end %></table>
-	</tr>
+	<%= render :partial => "menu", :object => menu %>
 <% end %>
 </table>
 
 <br />
 
+<% if isadmin then %>
 <%= link_to 'New menu', new_menu_path %>
+<% end %>

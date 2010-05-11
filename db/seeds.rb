@@ -97,4 +97,5 @@ Dish.create([{:name => "ricard", :price => 400, :available => true,
 Dish.create([{:name => "evian", :price => 200, :available => true,
 	:category_id => cat.first.id }])
 
+Cattype.create([{:name => "menu"}])
 #cattype = Cattype.create([ {:name => 'dish'}, {:name => 'menu'}])

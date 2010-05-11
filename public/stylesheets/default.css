@@ -1,0 +1,37 @@
+body {
+	background-color: black;
+}
+
+.block {
+	background-color:  white;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #0074ba;
+	color: #9c624e;
+}
+
+.footer_block {
+	text-align: right;
+	color: #e8d4b1;
+}
+
+.logo{
+	float: right;
+	clear: both;
+}
+
+.table_header > img {
+	text-align: center;
+}
+
+.table_header {
+	background-color: white;
+	text-decoration: underline;
+	color: black;
+	font-family:"Times New Roman", Times, serif;
+	font-size: 1em;
+}
+
+.unavailable {
+	color: red;
+}

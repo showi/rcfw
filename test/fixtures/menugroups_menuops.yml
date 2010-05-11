@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  menugroup_id: 1
+  menuop_id: 1
+
+two:
+  menugroup_id: 1
+  menuop_id: 1

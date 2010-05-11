@@ -1,24 +1,38 @@
 <table width="100%">
 	<% find_top_category_by_type("dish").each do |category| %>
-		<tr>
-			<td colspan="3" class="table_header"><%= image_tag("puce.png") %>
-			<%= category.name.capitalize %>
+		<tr class="table_header">
+			<td  class="table_header" width="16px"><%= image_tag("puce.png") %></td>
+			<td colspan="2"><%= category.name.capitalize %></td>
 		</tr>
-		<% Dish.find(:all, :conditions => { :category_id => category.id }).each do |dish| %>
+		<% Category.find(:all, :conditions => { :parent_id => category.id }).each do |subcat| %>
 			<tr>
-			<td>&nbsp;</td>
-			<td style="color: black"><li><%=h dish.name %></td>
-			<td style="color: white;"><%=h dish.price / 100.0 %>&nbsp;&euro;</td>
-			<% if isadmin then %>
-			<td><%=h dish.description%></td>
-			<td><%=h dish.available%></td>
-			<td><%=h dish.onlywithmenu%></td>
-    		<td><%= link_to 'Show', dish %></td>
-   	 	<td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-   		 <td><%= link_to 'Destroy', dish, :confirm => 'Are you sure?', :method => :delete %></td>
-			<%end %>
+				<td></td>
+				<td class="table_header" colspan="2"><%= image_tag("puce.png") %>&nbsp;<%= subcat.name%></td>
 			</tr>
+			<% find_subcat_dishes(subcat.id).each do |dish| %>
+				<%= render :partial => "dish", :object => dish %>
+			<% end %>
 		<% end %>
+		<% find_subcat_dishes(category.id, 1).each do |dish| %>
+			<%= render :partial => "dish", :object => dish %>
+		<% end %>
+			
+
+			<!--<tr>
+			<td>&nbsp;</td>
+			<td style="color: black"><li><=h dish.name %></td>
+			<td style="color: white;"><=h dish.price / 100.0 %>&nbsp;&euro;</td>
+			<% if isadmin then %>
+			<td><=h dish.description%></td>
+			<td><=h dish.available%></td>
+			<td><=h dish.onlywithmenu%></td>
+    		<td><= link_to 'Show', dish %></td>
+   	 	<td><= link_to 'Edit', edit_dish_path(dish) %></td>
+   		 <td><= link_to 'Destroy', dish, :confirm => 'Are you sure?', :method => :delete %></td>
+			<%end %>
+			</tr>-->
+
+
 	<% end %>	
 </table>
 

@@ -1,0 +1,20 @@
+<tr>
+	<td></td>
+	<% if menu.available then %>
+		<% myclass = "available" %>
+		<td class="<%= myclass %>"><%= menu.name %></td>
+		<td><%= menu.price / 100.0 %>&nbsp;&euro;
+	<% else %>
+		<% myclass = "unavailable" %>
+		<%if isadmin then %>
+			<td class="<%= myclass %>"><%= menu.name %></td>
+			<td><%= menu.price / 100.0 %>&nbsp;&euro;
+		<% end %>
+	<% end %>
+	<% if isadmin then %>
+ 		<%= check_box_tag 'available', menu.available, menu.available, :disabled => true%>|
+		<%= link_to 'Show', menu %>|
+		<%= link_to 'Edit', edit_menu_path(menu) %>|
+		<%= link_to 'Destroy', menu, :confirm => 'Are you sure?', :method     => :delete %>
+	<% end %>
+</td>
